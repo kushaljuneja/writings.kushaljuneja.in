@@ -1,0 +1,15 @@
+baseURL = 'https://writings.kushaljuneja.in'
+languageCode = 'en-us'
+title = 'Writings'
+theme = 'hyde'
+
+
+[Menus]
+main = [
+    {Name = "About Me", URL = "https://www.kushaljuneja.in"},
+]
+
+
+[params]
+subtitle = "by Kushal Juneja"
+description = "Here, I write about topics that feel like spinning plates to me: whatever inspires curiosity and investigation."
