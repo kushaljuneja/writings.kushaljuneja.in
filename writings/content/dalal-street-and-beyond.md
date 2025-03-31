@@ -1,8 +1,9 @@
----
-title: "Dalal Street and Beyond"
-date: 2025-03-31T19:22:08+05:30
-draft: false
----
++++
+title = "Dalal Street and Beyond"
+date = 2025-03-31T19:22:08+05:30
+draft = false
+tags = ["podcast"]
++++
 
 [![Listen On Spotify](https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/episode/3h5WQPx1zq8slyuYgLtJGO?si=696a29ae19ab4d84)
 

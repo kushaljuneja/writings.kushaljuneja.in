@@ -13,3 +13,7 @@ main = [
 [params]
 subtitle = "by Kushal Juneja"
 description = "Here, I write about topics that feel like spinning plates to me: whatever inspires curiosity and investigation."
+
+[taxonomies]
+category = "categories"
+tag = "tags"

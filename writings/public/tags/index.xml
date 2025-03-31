@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Writings</title>
+    <link>https://writings.kushaljuneja.in/tags/</link>
+    <description>Recent content in Tags on Writings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 31 Mar 2025 19:22:08 +0530</lastBuildDate><atom:link href="https://writings.kushaljuneja.in/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>podcast</title>
+      <link>https://writings.kushaljuneja.in/tags/podcast/</link>
+      <pubDate>Mon, 31 Mar 2025 19:22:08 +0530</pubDate>
+      
+      <guid>https://writings.kushaljuneja.in/tags/podcast/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
