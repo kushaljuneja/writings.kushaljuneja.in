@@ -1,8 +1,6 @@
 baseURL = 'https://writings.kushaljuneja.in'
 languageCode = 'en-us'
 title = 'Writings'
-theme = 'hyde'
-
 
 [Menus]
 main = [
@@ -17,3 +15,10 @@ description = "Here, I write about topics that feel like spinning plates to me: 
 [taxonomies]
 category = "categories"
 tag = "tags"
+
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 6
+    ordered = false
+    startLevel = 1
