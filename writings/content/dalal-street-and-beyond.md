@@ -5,7 +5,7 @@ draft = false
 tags = ["podcast"]
 +++
 
-{{< spotify type="episode" id="3h5WQPx1zq8slyuYgLtJGO" >}}
+[![Listen On Spotify](https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/episode/3h5WQPx1zq8slyuYgLtJGO?si=696a29ae19ab4d84)
 
 Markets, business and policy are all driven by one thing - narrative. Welcome to The Narrative Podcast, the podcast where we break down the stories behind business, markets and policy. If you want to understand the world beyond the headlines, this is your space for insight, analysis and clarity. I am your host Kushal Juneja and in this episode - "Dalal Street and beyond" - we will discuss about the BSE, the NSE, the SENSEX and NIFTY indices, and also touch upon other major stock exchanges and indices around the world.
 
