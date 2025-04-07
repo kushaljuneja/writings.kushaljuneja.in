@@ -16,7 +16,7 @@ description = "Here, I write about topics that feel like spinning plates to me: 
 category = "categories"
 tag = "tags"
 
-
+ 
 [markup]
   [markup.tableOfContents]
     endLevel = 6

@@ -46,8 +46,9 @@ For each year from 1901 to 2024, IMD has provided the daily rainfall data over e
 
 How to download the 124 NetCDF data from [IMD Pune's webpage](https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html) without manually clicking download button 124 times ? The following python script can be used to automate the download process.
 
+{{< details summary="See the details" >}}
 
-```python
+```python {linenos=inline hl_lines=[] style=emacs}
 import requests
 from multiprocessing import Pool, cpu_count
 
@@ -99,7 +100,7 @@ if __name__ == '__main__':
     main()
 ```
 
-
+{{< /details >}}
 
 Once the NetCDF files have been downloaded for each year from 1901 to 2024. We process the NetCDF files to obtain data in the following tabular format and load the same in a local SQLite table for future use.
 
@@ -111,32 +112,171 @@ Once the NetCDF files have been downloaded for each year from 1901 to 2024. We p
 | ...  | ...   | ... | ...   | ...   | ...              |
 
 
-
-<!-- 
-
-This is a cool way to comment content in markdown
-
-inline latex
-\\(e = mc^2\\)
-
-new line latex - approach 01
-\\[\int_a^b f(x)\\]
-
-new line latex - approach 02
-$$\sum_{x=1}^5 y^z$$ -->
-
-
 # Exploratory Data Analysis
 
-### What is the current LTA of AISMR ?
+## How many distinct \\(0.25\degree * 0.25\degree\\) grid points cover the Indian landmass ?
 
-LTA = 30 years average of area-averaged-rainfall received during JJAS months over entire India.
+There are \\(4964\\) grid points - each \\(0.25\degree * 0.25\degree\\) in size covering the Indian landmass.
 
-### How has the LTA changed over the years ?
+{{< details summary="See the details" >}}
 
-### How is a normal, below normal and above normal monsoon defined ? What are the historical trends on this ?
+```python {linenos=inline hl_lines=[] style=emacs}
+import sqlite3
+import pandas as pd
+import numpy as np
 
-### What are some homogenous monsoon rainfall clusters in India ?
+conn = sqlite3.connect('rainfall.db')
+cursor = conn.cursor()
+
+query = "SELECT distinct lat, lon from rainfall"
+cursor.execute(query)
+
+rows = cursor.fetchall()
+df = pd.DataFrame(rows, columns=np.array(cursor.description)[:, 0])
+print(df.shape)
+# (4964, 2)
+conn.close()
+```
+
+{{< /details >}}
+
+
+## How much rainfall did India receive over the course of 2024 ?
+
+The entire landmass of India recived a total of \\(6074999.43\ mm\\) of rainfall during 2024. On dividing this by \\(4964\\) - the number of grid points covering the Indian landmass - each grid point received roughly \\(1223.81\ mm\\) of rainfall.
+
+{{< details summary="See the details" >}}
+
+```python {linenos=inline hl_lines=[] style=emacs}
+import sqlite3
+import pandas as pd
+import numpy as np
+import duckdb
+
+conn = sqlite3.connect('rainfall.db')
+cursor = conn.cursor()
+query = "SELECT * from rainfall where substr(date, 1, 4) = '2024'"
+cursor.execute(query)
+df = pd.DataFrame(rows, columns=np.array(cursor.description)[:, 0])
+conn.close()
+
+agg_df = duckdb.query("select date, sum(rf::DOUBLE) as sum_rf from df group by date order by date").df()
+
+# rainfall over India 2024
+print(agg_df['sum_rf'].sum())
+# 6074999.43
+print(agg_df['sum_rf'].sum() / 4964)
+# 1223.81
+```
+{{< /details >}}
+
+
+## How much rainfall did India receive over the course of Summer Monsoon 2024 ?
+
+The Summer Monsoon 2024 spans over 4 months:
+- June
+- July
+- August
+- September
+
+Over the course of these 4 months - India received \\(4701855.98\ mm\\) of rainfall. The area averaged rainfall is \\(947.19\ mm\\). [IMD's official press release](https://www.imdpune.gov.in/latestnews/features_10_2024.pdf) states the area averaged rainfall is \\(934.8\ mm\\). Thus our calculations are close enough.
+
+> The area averaged rainfall received during June, July, August and September months is defined as All India Summer Monsoon Rainfall (AISMR). Thus, the AISMR 2024 is \\(947.19\ mm\\).
+
+{{< details summary="See the details" >}}
+
+```python {linenos=inline hl_lines=[] style=emacs}
+import sqlite3
+import pandas as pd
+import numpy as np
+import duckdb
+
+conn = sqlite3.connect('rainfall.db')
+cursor = conn.cursor()
+query = "SELECT * from rainfall where substr(date, 1, 4) = '2024'"
+cursor.execute(query)
+df = pd.DataFrame(rows, columns=np.array(cursor.description)[:, 0])
+conn.close()
+
+agg_df = duckdb.query("select date, sum(rf::DOUBLE) as sum_rf from df group by date order by date").df()
+
+# rainfall over India JJAS 2024
+jjas_agg_df = duckdb.query("select date, sum_rf from agg_df where substr(date, 6, 2) in ('06', '07', '08', '09')").df()
+
+print(jjas_agg_df['sum_rf'].sum())
+# 4701855.98
+print(jjas_agg_df['sum_rf'].sum() / 4964)
+# 947.19
+```
+{{< /details >}}
+
+
+> India received 77.4 % of annual rainfall volume during the Summer Monsoon period. This highlights the importance of Indian Monsoon to India's agricultural, industrial and economic activity.
+
+
+## What is the Long Period Average (LPA) of AISMR ?
+
+[IMD Monsoon FAQs](https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf) defines LPA as the 50 year time-average of AISMR from 1961 to 2010. IMD's current LPA definition is :
+
+$$
+LPA := 880.6\ mm
+$$
+
+We calculate the LPA as:
+
+$$
+LPA = \frac {\sum_{t=1961}^{2010}{AISMR_{t}}} {50} = 850.37\ mm 
+$$
+
+Our calculations are close enough.
+
+> Remarks: The LPA definition of IMD is not consistent. The [IMD Monsoon FAQs](https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf) has calculated it as 880 mm while the  [IMD 2024 monsoon report](https://www.imdpune.gov.in/latestnews/features_10_2024.pdf) has calculated it as 868 mm. To stay away from such inconsistencies, we use the Long Term Average (LTA) of AISMR.
+
+{{< details summary="See the details" >}}
+
+```python {linenos=inline hl_lines=[] style=emacs}
+import sqlite3
+import pandas as pd
+import numpy as np
+import duckdb
+
+conn = sqlite3.connect('rainfall.db')
+cursor = conn.cursor()
+
+query = """
+SELECT CAST(SUBSTR(date, 6, 2) AS INT) as month, CAST(SUBSTR(date, 1, 4) AS INT) as year, CAST(rf as DOUBLE) as rf 
+from rainfall
+where month in (6, 7, 8, 9)
+and year >= 1961 
+and year <= 2010
+"""
+
+cursor.execute(query)
+
+rows = cursor.fetchall()
+df = pd.DataFrame(rows, columns=np.array(cursor.description)[:, 0])
+conn.close()
+
+jjas_agg_df = duckdb.query("select month, year, sum(rf) / 4964 as rf from df group by month, year order by year, month").df()
+
+agg_df = duckdb.query("select year, sum(rf) as rf from jjas_agg_df group by year order by year").df()
+
+print(agg_df['rf'].mean())
+# 850.37
+```
+{{< /details >}}
+
+## What is Long Term Average (LTA) of AISMR ? How has the LTA changed over the decades ?
+
+> WORK IN PROGRESS
+
+## How does IMD define a normal, below-normal and above-normal rainfall ?
+
+> WORK IN PROGRESS
+
+<!-- todo -->
+
+<!-- ## What are some homogenous monsoon rainfall clusters in India ?
 
 How does this compare to the 5 clusters defined by IMD ?
 
@@ -144,11 +284,11 @@ What are these cluster regions in India ?
 
 > How does this relate to the industry, agriculture in these areas ? 
 
-### How does the LTA and rainfall trends looks for each homogenous cluster ?
+## How does the LTA and rainfall trends looks for each homogenous cluster ? -->
 
 
-## Next Steps
+# Next Steps
 
-The end goal is to forecast the monsoon rainfall for Summer Monsoon Rainfall 2025 (JJAS) for each of these homogenous clusters. This will also give us an estimate of the AISMR 2025 that we can compare and contrast with IMD's bulletin of Long Range Monsoon Forecast generally released during the end of April.
+The end goal of this analysis is to forecast AISMR for 2025 and compare the same with IMD's bulletin of Long Range Monsoon Forecast generally released during the end of April.
 
 
