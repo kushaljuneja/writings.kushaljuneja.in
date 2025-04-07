@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>experiments on Writings</title>
+    <link>https://writings.kushaljuneja.in/tags/experiments/</link>
+    <description>Recent content in experiments on Writings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 03 Apr 2025 22:21:30 +0530</lastBuildDate><atom:link href="https://writings.kushaljuneja.in/tags/experiments/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On Forecasting AIMSR 2025 - Part 1 / N</title>
+      <link>https://writings.kushaljuneja.in/on-forecasting-indian-monsoon-2025-part001/</link>
+      <pubDate>Thu, 03 Apr 2025 22:21:30 +0530</pubDate>
+      
+      <guid>https://writings.kushaljuneja.in/on-forecasting-indian-monsoon-2025-part001/</guid>
+      <description>Introduction In this post, we will analyse India&amp;rsquo;s historic monsoon rainfall patterns. This analysis is the first step (i.e. 1 / N) to accurately and timely forecast All India Summer Monsoon Rainfall (AISMR) 2025 - and compare it with IMD&amp;rsquo;s official forecast released in May 2025.
+Data Collection We require India&amp;rsquo;s historic rainfall data. IMD Pune provides us with daily rainfall data over each \(0.25\degree * 0.25\degree\) grid over India for the time range \(1901 - 2024\).</description>
+    </item>
+    
+  </channel>
+</rss>

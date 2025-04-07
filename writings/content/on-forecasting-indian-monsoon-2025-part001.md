@@ -1,7 +1,7 @@
 +++
 title = "On Forecasting AIMSR 2025 - Part 1 / N"
 date = 2025-04-03T22:21:30+05:30
-draft = true
+draft = false
 tags = ["experiments"]
 categories = ["experiments"]
 katex = true

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.111.3">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>On Forecasting AIMSR 2025 - Part 1 / N &middot; Writings</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+
+    onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://writings.kushaljuneja.in"><h1>Writings</h1></a>
+      <p class="lead">
+      <em> by Kushal Juneja </em>
+      </p>
+      <p class="lead">
+       Here, I write about topics that feel like spinning plates to me: whatever inspires curiosity and investigation. 
+      </p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        
+        <li><a href="https://www.kushaljuneja.in"> About Me </a></li>
+      </ul>
+    </nav>
+
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>On Forecasting AIMSR 2025 - Part 1 / N</h1>
+  <time datetime=2025-04-03T22:21:30&#43;0530 class="post-date">Thu, Apr 3, 2025</time>
+
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#data-collection">Data Collection</a></li>
+    <li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a>
+      <ul>
+        <li><a href="#how-many-distinct-025degree--025degree-grid-points-cover-the-indian-landmass-">How many distinct \(0.25\degree * 0.25\degree\) grid points cover the Indian landmass ?</a></li>
+        <li><a href="#how-much-rainfall-did-india-receive-over-the-course-of-2024-">How much rainfall did India receive over the course of 2024 ?</a></li>
+        <li><a href="#how-much-rainfall-did-india-receive-over-the-course-of-summer-monsoon-2024-">How much rainfall did India receive over the course of Summer Monsoon 2024 ?</a></li>
+        <li><a href="#what-is-the-long-period-average-lpa-of-aismr-">What is the Long Period Average (LPA) of AISMR ?</a></li>
+        <li><a href="#what-is-long-term-average-lta-of-aismr--how-has-the-lta-changed-over-the-decades-">What is Long Term Average (LTA) of AISMR ? How has the LTA changed over the decades ?</a></li>
+        <li><a href="#how-does-imd-define-a-normal-below-normal-and-above-normal-rainfall-">How does IMD define a normal, below-normal and above-normal rainfall ?</a></li>
+      </ul>
+    </li>
+    <li><a href="#next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+  
+  <h1 id="introduction">Introduction</h1>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>In this post, we will analyse India&rsquo;s historic monsoon rainfall patterns. This analysis is the first step (i.e. 1 / N) to accurately and timely forecast All India Summer Monsoon Rainfall (AISMR) 2025 - and compare it with IMD&rsquo;s official forecast released in May 2025.</p>
+<h1 id="data-collection">Data Collection</h1>
+<!-- raw HTML omitted -->
+<p>We require India&rsquo;s historic rainfall data. <a href="https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html">IMD Pune</a> provides us with daily rainfall data over each \(0.25\degree * 0.25\degree\) grid over India for the time range \(1901 - 2024\).</p>
+<!-- raw HTML omitted -->
+<p>How big is a \(0.25\degree * 0.25\degree\) grid ? Let&rsquo;s get a sense by overlaying the map of Delhi and the map of Bangalore on such a grid.</p>
+<figure><img src="/images/20250405-delhi-0.25-0.25-grid-ss.png"
+         alt="A snapshot of Delhi&#39;s map"/><figcaption>
+            <p>A snapshot of Delhi&rsquo;s map on top 0f \(0.25\degree * 0.25\degree\) grid</p>
+        </figcaption>
+</figure>
+
+<figure><img src="/images/20250405-bangalore-0.25-0.25-grid-ss.png"
+         alt="A snapshot of Bangalore&#39;s map on top 0f \\(0.25\degree * 0.25\degree\\) grid"/><figcaption>
+            <p>A snapshot of Bangalore&rsquo;s map on top 0f \(0.25\degree * 0.25\degree\) grid</p>
+        </figcaption>
+</figure>
+
+<p>For each year from 1901 to 2024, IMD has provided the daily rainfall data over each Indian grid point as a NetCDF file. On their website we can downloaded the NetCDF file yearwise.</p>
+<figure><img src="/images/image.png"
+         alt="A snapshot of IMD Pune data portal"/>
+</figure>
+
+<p>How to download the 124 NetCDF data from <a href="https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html">IMD Pune&rsquo;s webpage</a> without manually clicking download button 124 times ? The following python script can be used to automate the download process.</p>
+
+    <details>
+      <summary>See the details</summary>
+      <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">requests</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#a2f;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">multiprocessing</span> <span style="color:#a2f;font-weight:bold">import</span> Pool, cpu_count
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>headers <span style="color:#666">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#b44">&#39;Accept&#39;</span>: <span style="color:#b44">&#39;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#b44">&#39;Accept-Language&#39;</span>: <span style="color:#b44">&#39;en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#b44">&#39;Cache-Control&#39;</span>: <span style="color:#b44">&#39;max-age=0&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#b44">&#39;Connection&#39;</span>: <span style="color:#b44">&#39;keep-alive&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#b44">&#39;Content-Type&#39;</span>: <span style="color:#b44">&#39;application/x-www-form-urlencoded&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    <span style="color:#b44">&#39;Origin&#39;</span>: <span style="color:#b44">&#39;https://www.imdpune.gov.in&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#b44">&#39;Referer&#39;</span>: <span style="color:#b44">&#39;https://www.imdpune.gov.in/&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#b44">&#39;Sec-Fetch-Dest&#39;</span>: <span style="color:#b44">&#39;document&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    <span style="color:#b44">&#39;Sec-Fetch-Mode&#39;</span>: <span style="color:#b44">&#39;navigate&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#b44">&#39;Sec-Fetch-Site&#39;</span>: <span style="color:#b44">&#39;same-origin&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#b44">&#39;Sec-Fetch-User&#39;</span>: <span style="color:#b44">&#39;?1&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#b44">&#39;Upgrade-Insecure-Requests&#39;</span>: <span style="color:#b44">&#39;1&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    <span style="color:#b44">&#39;User-Agent&#39;</span>: <span style="color:#b44">&#39;Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Mobile Safari/537.36&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>    <span style="color:#b44">&#39;sec-ch-ua&#39;</span>: <span style="color:#b44">&#39;&#34;Chromium&#34;;v=&#34;134&#34;, &#34;Not:A-Brand&#34;;v=&#34;24&#34;, &#34;Google Chrome&#34;;v=&#34;134&#34;&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#b44">&#39;sec-ch-ua-mobile&#39;</span>: <span style="color:#b44">&#39;?1&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    <span style="color:#b44">&#39;sec-ch-ua-platform&#39;</span>: <span style="color:#b44">&#39;&#34;Android&#34;&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">download_file</span>(year):
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>    data <span style="color:#666">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        <span style="color:#b44">&#39;RF25&#39;</span>: <span style="color:#a2f">str</span>(year),
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>    response <span style="color:#666">=</span> requests<span style="color:#666">.</span>post(<span style="color:#b44">&#39;https://www.imdpune.gov.in/cmpg/Griddata/RF25.php&#39;</span>, headers<span style="color:#666">=</span>headers, data<span style="color:#666">=</span>data, stream<span style="color:#666">=</span><span style="color:#a2f;font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>    filename <span style="color:#666">=</span> <span style="color:#b44">f</span><span style="color:#b44">&#34;data/</span><span style="color:#b68;font-weight:bold">{</span><span style="color:#a2f">str</span>(year)<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">.nc&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>    <span style="color:#a2f">print</span>(filename)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>    <span style="color:#a2f;font-weight:bold">if</span> response<span style="color:#666">.</span>status_code <span style="color:#666">==</span> <span style="color:#666">200</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>        <span style="color:#a2f;font-weight:bold">with</span> <span style="color:#a2f">open</span>(filename, <span style="color:#b44">&#34;wb&#34;</span>) <span style="color:#a2f;font-weight:bold">as</span> file:  <span style="color:#080;font-style:italic"># Open file in binary write mode</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>            <span style="color:#a2f;font-weight:bold">for</span> chunk <span style="color:#a2f;font-weight:bold">in</span> response<span style="color:#666">.</span>iter_content(chunk_size<span style="color:#666">=</span><span style="color:#666">8192</span>):  <span style="color:#080;font-style:italic"># Read in chunks</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>                file<span style="color:#666">.</span>write(chunk)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>        <span style="color:#a2f">print</span>(<span style="color:#b44">&#34;File downloaded successfully&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>    <span style="color:#a2f;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>        <span style="color:#a2f">print</span>(<span style="color:#b44">f</span><span style="color:#b44">&#34;Failed to download file: </span><span style="color:#b68;font-weight:bold">{</span>response<span style="color:#666">.</span>status_code<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span><span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">main</span>():
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>    years <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">range</span>(<span style="color:#666">1901</span>, <span style="color:#666">2025</span>))  <span style="color:#080;font-style:italic"># List of years</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43</span><span>    <span style="color:#080;font-style:italic"># Use a pool of worker processes to download files in parallel</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44</span><span>    num_workers <span style="color:#666">=</span> <span style="color:#a2f">min</span>(cpu_count(), <span style="color:#a2f">len</span>(years))  <span style="color:#080;font-style:italic"># Use available CPU cores</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45</span><span>    <span style="color:#a2f;font-weight:bold">with</span> Pool(processes<span style="color:#666">=</span>num_workers) <span style="color:#a2f;font-weight:bold">as</span> pool:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46</span><span>        pool<span style="color:#666">.</span>map(download_file, years)  <span style="color:#080;font-style:italic"># Distribute work across processes</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48</span><span><span style="color:#a2f;font-weight:bold">if</span> __name__ <span style="color:#666">==</span> <span style="color:#b44">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49</span><span>    main()
+</span></span></code></pre></div></details>
+<p>Once the NetCDF files have been downloaded for each year from 1901 to 2024. We process the NetCDF files to obtain data in the following tabular format and load the same in a local SQLite table for future use.</p>
+<table>
+<thead>
+<tr>
+<th>year</th>
+<th>month</th>
+<th>day</th>
+<th>lat</th>
+<th>lon</th>
+<th>rainfall (in mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>06</td>
+<td>01</td>
+<td>27.25</td>
+<td>92.25</td>
+<td>2.183660</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="exploratory-data-analysis">Exploratory Data Analysis</h1>
+<h2 id="how-many-distinct-025degree--025degree-grid-points-cover-the-indian-landmass-">How many distinct \(0.25\degree * 0.25\degree\) grid points cover the Indian landmass ?</h2>
+<p>There are \(4964\) grid points - each \(0.25\degree * 0.25\degree\) in size covering the Indian landmass.</p>
+
+    <details>
+      <summary>See the details</summary>
+      <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">sqlite3</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">pandas</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">pd</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">numpy</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">np</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>conn <span style="color:#666">=</span> sqlite3<span style="color:#666">.</span>connect(<span style="color:#b44">&#39;rainfall.db&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>cursor <span style="color:#666">=</span> conn<span style="color:#666">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>query <span style="color:#666">=</span> <span style="color:#b44">&#34;SELECT distinct lat, lon from rainfall&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>cursor<span style="color:#666">.</span>execute(query)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>rows <span style="color:#666">=</span> cursor<span style="color:#666">.</span>fetchall()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(rows, columns<span style="color:#666">=</span>np<span style="color:#666">.</span>array(cursor<span style="color:#666">.</span>description)[:, <span style="color:#666">0</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#a2f">print</span>(df<span style="color:#666">.</span>shape)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#080;font-style:italic"># (4964, 2)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>conn<span style="color:#666">.</span>close()
+</span></span></code></pre></div></details>
+<h2 id="how-much-rainfall-did-india-receive-over-the-course-of-2024-">How much rainfall did India receive over the course of 2024 ?</h2>
+<p>The entire landmass of India recived a total of \(6074999.43\ mm\) of rainfall during 2024. On dividing this by \(4964\) - the number of grid points covering the Indian landmass - each grid point received roughly \(1223.81\ mm\) of rainfall.</p>
+
+    <details>
+      <summary>See the details</summary>
+      <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">sqlite3</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">pandas</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">pd</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">numpy</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">np</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">duckdb</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>conn <span style="color:#666">=</span> sqlite3<span style="color:#666">.</span>connect(<span style="color:#b44">&#39;rainfall.db&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>cursor <span style="color:#666">=</span> conn<span style="color:#666">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>query <span style="color:#666">=</span> <span style="color:#b44">&#34;SELECT * from rainfall where substr(date, 1, 4) = &#39;2024&#39;&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>cursor<span style="color:#666">.</span>execute(query)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(rows, columns<span style="color:#666">=</span>np<span style="color:#666">.</span>array(cursor<span style="color:#666">.</span>description)[:, <span style="color:#666">0</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>conn<span style="color:#666">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>agg_df <span style="color:#666">=</span> duckdb<span style="color:#666">.</span>query(<span style="color:#b44">&#34;select date, sum(rf::DOUBLE) as sum_rf from df group by date order by date&#34;</span>)<span style="color:#666">.</span>df()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#080;font-style:italic"># rainfall over India 2024</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#a2f">print</span>(agg_df[<span style="color:#b44">&#39;sum_rf&#39;</span>]<span style="color:#666">.</span>sum())
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#080;font-style:italic"># 6074999.43</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span><span style="color:#a2f">print</span>(agg_df[<span style="color:#b44">&#39;sum_rf&#39;</span>]<span style="color:#666">.</span>sum() <span style="color:#666">/</span> <span style="color:#666">4964</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span><span style="color:#080;font-style:italic"># 1223.81</span>
+</span></span></code></pre></div></details>
+<h2 id="how-much-rainfall-did-india-receive-over-the-course-of-summer-monsoon-2024-">How much rainfall did India receive over the course of Summer Monsoon 2024 ?</h2>
+<p>The Summer Monsoon 2024 spans over 4 months:</p>
+<ul>
+<li>June</li>
+<li>July</li>
+<li>August</li>
+<li>September</li>
+</ul>
+<p>Over the course of these 4 months - India received \(4701855.98\ mm\) of rainfall. The area averaged rainfall is \(947.19\ mm\). <a href="https://www.imdpune.gov.in/latestnews/features_10_2024.pdf">IMD&rsquo;s official press release</a> states the area averaged rainfall is \(934.8\ mm\). Thus our calculations are close enough.</p>
+<blockquote>
+<p>The area averaged rainfall received during June, July, August and September months is defined as All India Summer Monsoon Rainfall (AISMR). Thus, the AISMR 2024 is \(947.19\ mm\).</p>
+</blockquote>
+
+    <details>
+      <summary>See the details</summary>
+      <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">sqlite3</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">pandas</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">pd</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">numpy</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">np</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">duckdb</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>conn <span style="color:#666">=</span> sqlite3<span style="color:#666">.</span>connect(<span style="color:#b44">&#39;rainfall.db&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>cursor <span style="color:#666">=</span> conn<span style="color:#666">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>query <span style="color:#666">=</span> <span style="color:#b44">&#34;SELECT * from rainfall where substr(date, 1, 4) = &#39;2024&#39;&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>cursor<span style="color:#666">.</span>execute(query)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(rows, columns<span style="color:#666">=</span>np<span style="color:#666">.</span>array(cursor<span style="color:#666">.</span>description)[:, <span style="color:#666">0</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>conn<span style="color:#666">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>agg_df <span style="color:#666">=</span> duckdb<span style="color:#666">.</span>query(<span style="color:#b44">&#34;select date, sum(rf::DOUBLE) as sum_rf from df group by date order by date&#34;</span>)<span style="color:#666">.</span>df()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#080;font-style:italic"># rainfall over India JJAS 2024</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>jjas_agg_df <span style="color:#666">=</span> duckdb<span style="color:#666">.</span>query(<span style="color:#b44">&#34;select date, sum_rf from agg_df where substr(date, 6, 2) in (&#39;06&#39;, &#39;07&#39;, &#39;08&#39;, &#39;09&#39;)&#34;</span>)<span style="color:#666">.</span>df()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span><span style="color:#a2f">print</span>(jjas_agg_df[<span style="color:#b44">&#39;sum_rf&#39;</span>]<span style="color:#666">.</span>sum())
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span><span style="color:#080;font-style:italic"># 4701855.98</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span><span style="color:#a2f">print</span>(jjas_agg_df[<span style="color:#b44">&#39;sum_rf&#39;</span>]<span style="color:#666">.</span>sum() <span style="color:#666">/</span> <span style="color:#666">4964</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#080;font-style:italic"># 947.19</span>
+</span></span></code></pre></div></details>
+<blockquote>
+<p>India received 77.4 % of annual rainfall volume during the Summer Monsoon period. This highlights the importance of Indian Monsoon to India&rsquo;s agricultural, industrial and economic activity.</p>
+</blockquote>
+<h2 id="what-is-the-long-period-average-lpa-of-aismr-">What is the Long Period Average (LPA) of AISMR ?</h2>
+<p><a href="https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf">IMD Monsoon FAQs</a> defines LPA as the 50 year time-average of AISMR from 1961 to 2010. IMD&rsquo;s current LPA definition is :</p>
+<p>$$
+LPA := 880.6\ mm
+$$</p>
+<p>We calculate the LPA as:</p>
+<p>$$
+LPA = \frac {\sum_{t=1961}^{2010}{AISMR_{t}}} {50} = 850.37\ mm
+$$</p>
+<p>Our calculations are close enough.</p>
+<blockquote>
+<p>Remarks: The LPA definition of IMD is not consistent. The <a href="https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf">IMD Monsoon FAQs</a> has calculated it as 880 mm while the  <a href="https://www.imdpune.gov.in/latestnews/features_10_2024.pdf">IMD 2024 monsoon report</a> has calculated it as 868 mm. To stay away from such inconsistencies, we use the Long Term Average (LTA) of AISMR.</p>
+</blockquote>
+
+    <details>
+      <summary>See the details</summary>
+      <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">sqlite3</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">pandas</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">pd</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">numpy</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">np</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">duckdb</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>conn <span style="color:#666">=</span> sqlite3<span style="color:#666">.</span>connect(<span style="color:#b44">&#39;rainfall.db&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>cursor <span style="color:#666">=</span> conn<span style="color:#666">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>query <span style="color:#666">=</span> <span style="color:#b44">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#b44">SELECT CAST(SUBSTR(date, 6, 2) AS INT) as month, CAST(SUBSTR(date, 1, 4) AS INT) as year, CAST(rf as DOUBLE) as rf 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#b44">from rainfall
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#b44">where month in (6, 7, 8, 9)
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#b44">and year &gt;= 1961 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#b44">and year &lt;= 2010
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#b44">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>cursor<span style="color:#666">.</span>execute(query)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>rows <span style="color:#666">=</span> cursor<span style="color:#666">.</span>fetchall()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(rows, columns<span style="color:#666">=</span>np<span style="color:#666">.</span>array(cursor<span style="color:#666">.</span>description)[:, <span style="color:#666">0</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>conn<span style="color:#666">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>jjas_agg_df <span style="color:#666">=</span> duckdb<span style="color:#666">.</span>query(<span style="color:#b44">&#34;select month, year, sum(rf) / 4964 as rf from df group by month, year order by year, month&#34;</span>)<span style="color:#666">.</span>df()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>agg_df <span style="color:#666">=</span> duckdb<span style="color:#666">.</span>query(<span style="color:#b44">&#34;select year, sum(rf) as rf from jjas_agg_df group by year order by year&#34;</span>)<span style="color:#666">.</span>df()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span><span style="color:#a2f">print</span>(agg_df[<span style="color:#b44">&#39;rf&#39;</span>]<span style="color:#666">.</span>mean())
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span><span style="color:#080;font-style:italic"># 850.37</span>
+</span></span></code></pre></div></details>
+<h2 id="what-is-long-term-average-lta-of-aismr--how-has-the-lta-changed-over-the-decades-">What is Long Term Average (LTA) of AISMR ? How has the LTA changed over the decades ?</h2>
+<blockquote>
+<p>WORK IN PROGRESS</p>
+</blockquote>
+<h2 id="how-does-imd-define-a-normal-below-normal-and-above-normal-rainfall-">How does IMD define a normal, below-normal and above-normal rainfall ?</h2>
+<blockquote>
+<p>WORK IN PROGRESS</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="next-steps">Next Steps</h1>
+<p>The end goal of this analysis is to forecast AISMR for 2025 and compare the same with IMD&rsquo;s bulletin of Long Range Monsoon Forecast generally released during the end of April.</p>
+
+</div>
+    </main>
+  </body>
+</html>
