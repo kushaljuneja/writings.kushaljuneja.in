@@ -350,18 +350,17 @@ LTA_T = \frac {\sum_{t=T-30}^{T-1}{AISMR_{t}}} {30}
 $$</p>
 <p>Thus,</p>
 <p>$$
-LTA_{2025} = \frac {\sum_{t=1995}^{2024}{AISMR_{t}}} {30}
+LTA_{2025} = \frac {\sum_{t=1995}^{2024}{AISMR_{t}}} {30} = 853.24 \ mm
 $$</p>
 <p>and</p>
 <p>$$
-LTA_{2024} = \frac {\sum_{t=1994}^{2023}{AISMR_{t}}} {30} =
+LTA_{2024} = \frac {\sum_{t=1994}^{2023}{AISMR_{t}}} {30} = 853.16 \ mm
 $$</p>
-
-    <details>
-      <summary>See the details</summary>
-      <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"></code></pre></div></details>
 <blockquote>
 <p>The AISMR for 2024 is 947.19 mm while the LTA calculated in 2024 is 853.16. Thus, 2024 received 11 % higher rainfall than LTA.</p>
+</blockquote>
+<blockquote>
+<p>The LTA for 2025 is 853.24 mm</p>
 </blockquote>
 <h3 id="how-has-aismr-and-lta-changed-over-the-decades-">How has AISMR and LTA changed over the decades ?</h3>
 <blockquote>
@@ -370,6 +369,7 @@ $$</p>
 <p><strong>Above Normal Rainfall</strong> \( \coloneqq \) \( AISMR_T \) \(\ge \) 105 %  \( LTA_T \)</p>
 <p><strong>Below Normal Rainfall</strong> \( \coloneqq \) \( AISMR_T \)  \(\leq \) 95 %  \( LTA_T \)</p>
 </blockquote>
+<p>We analyse how the AISMR and LTA has evolved since the 1950s till present.</p>
 <table>
 <thead>
 <tr>
@@ -829,11 +829,79 @@ $$</p>
 <blockquote>
 <p>Interesting: the LTA has been decreasing over the decades. From ~883 mm in 1951 to ~853 mm in 2024.</p>
 </blockquote>
+<p>On taking a high level view :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">status</th>
+<th style="text-align:right">count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">normal 🟡</td>
+<td style="text-align:right">28</td>
+</tr>
+<tr>
+<td style="text-align:left">below ❌</td>
+<td style="text-align:right">25</td>
+</tr>
+<tr>
+<td style="text-align:left">above ✅</td>
+<td style="text-align:right">21</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>The LTA for 2025 is 853.24 mm</p>
+<p>This is not generally highlighted, either by IMD or by the news media, the combination of high number of below normal ❌ AISMR years and the declining LTA trend over the decades.</p>
 </blockquote>
+
+    <details>
+      <summary>See the details</summary>
+      <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">sqlite3</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">pandas</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">pd</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">numpy</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">np</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">duckdb</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>conn <span style="color:#666">=</span> sqlite3<span style="color:#666">.</span>connect(<span style="color:#b44">&#39;rainfall.db&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>cursor <span style="color:#666">=</span> conn<span style="color:#666">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>query <span style="color:#666">=</span> <span style="color:#b44">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#b44">SELECT CAST(SUBSTR(date, 6, 2) AS INT) as month, CAST(SUBSTR(date, 1, 4) AS INT) as year, CAST(rf as DOUBLE) as rf 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#b44">from rainfall
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#b44">where month in (6, 7, 8, 9)
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#b44">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>cursor<span style="color:#666">.</span>execute(query)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>rows <span style="color:#666">=</span> cursor<span style="color:#666">.</span>fetchall()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(rows, columns<span style="color:#666">=</span>np<span style="color:#666">.</span>array(cursor<span style="color:#666">.</span>description)[:, <span style="color:#666">0</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>conn<span style="color:#666">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>agg_df <span style="color:#666">=</span> duckdb<span style="color:#666">.</span>query(<span style="color:#b44">&#34;select year, sum(rf) / 4964 as rf from df group by year order by year&#34;</span>)<span style="color:#666">.</span>df()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>agg_df[<span style="color:#b44">&#39;LTA&#39;</span>] <span style="color:#666">=</span> agg_df[<span style="color:#b44">&#39;rf&#39;</span>]<span style="color:#666">.</span>shift(<span style="color:#666">1</span>)<span style="color:#666">.</span>rolling(window<span style="color:#666">=</span><span style="color:#666">30</span>, min_periods<span style="color:#666">=</span><span style="color:#666">1</span>)<span style="color:#666">.</span>mean()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>agg_df <span style="color:#666">=</span> agg_df[agg_df[<span style="color:#b44">&#39;year&#39;</span>] <span style="color:#666">&gt;</span> <span style="color:#666">1950</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>agg_df[<span style="color:#b44">&#39;status&#39;</span>] <span style="color:#666">=</span> np<span style="color:#666">.</span>where(agg_df[<span style="color:#b44">&#39;rf&#39;</span>] <span style="color:#666">&lt;</span> <span style="color:#666">0.95</span> <span style="color:#666">*</span> agg_df[<span style="color:#b44">&#39;LTA&#39;</span>], <span style="color:#b44">&#39;below ❌&#39;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>                        np<span style="color:#666">.</span>where(agg_df[<span style="color:#b44">&#39;rf&#39;</span>] <span style="color:#666">&gt;</span> <span style="color:#666">1.05</span> <span style="color:#666">*</span> agg_df[<span style="color:#b44">&#39;LTA&#39;</span>], <span style="color:#b44">&#39;above ✅&#39;</span>, <span style="color:#b44">&#39;normal 🟡&#39;</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span><span style="color:#a2f">print</span>(agg_df<span style="color:#666">.</span>to_markdown(index<span style="color:#666">=</span><span style="color:#a2f;font-weight:bold">False</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span><span style="color:#080;font-style:italic"># ... markdown table</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>summary_df <span style="color:#666">=</span> duckdb<span style="color:#666">.</span>query(<span style="color:#b44">&#34;select status, count(*) from agg_df group by status&#34;</span>)<span style="color:#666">.</span>df()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span><span style="color:#a2f">print</span>(summary_df<span style="color:#666">.</span>to_markdown(index<span style="color:#666">=</span><span style="color:#a2f;font-weight:bold">False</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span><span style="color:#080;font-style:italic"># ... markdown table</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>duckdb<span style="color:#666">.</span>query(<span style="color:#b44">&#34;select mean(rf) from agg_df where year &gt;= 1995&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span><span style="color:#080;font-style:italic">#┌───────────────────┐</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span><span style="color:#080;font-style:italic">#│     mean(rf)      │</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span><span style="color:#080;font-style:italic">#│      double       │</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span><span style="color:#080;font-style:italic">#├───────────────────┤</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span><span style="color:#080;font-style:italic">#│ 853.2297699849788 │</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span><span style="color:#080;font-style:italic">#└───────────────────┘</span>
+</span></span></code></pre></div></details>
 <h1 id="next-steps">Next Steps</h1>
 <p>The end goal of this analysis is to forecast AISMR for 2025 and compare the same with IMD&rsquo;s bulletin of Long Range Monsoon Forecast generally released during the end of April.</p>
+<blockquote>
+<p>The interested reader may use and refer to - <a href="https://www.dropbox.com/scl/fi/vshkbowzc7x3s7ccit4ni/rainfall.db?rlkey=pln9hb82nxz9o9byv928nuuvo&amp;st=9w344l32&amp;dl=0"><code>rainfall.db</code></a> - a multi GB SQLITE DB file - calculated as described above and used in several code snippets above - for their own experiments.</p>
+</blockquote>
 
 </div>
     </main>

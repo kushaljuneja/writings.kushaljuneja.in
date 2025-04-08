@@ -276,23 +276,18 @@ $$
 Thus, 
 
 $$
-LTA_{2025} = \frac {\sum_{t=1995}^{2024}{AISMR_{t}}} {30} 
+LTA_{2025} = \frac {\sum_{t=1995}^{2024}{AISMR_{t}}} {30} = 853.24 \ mm
 $$
 
 and 
 
 $$
-LTA_{2024} = \frac {\sum_{t=1994}^{2023}{AISMR_{t}}} {30} = 
+LTA_{2024} = \frac {\sum_{t=1994}^{2023}{AISMR_{t}}} {30} = 853.16 \ mm
 $$
 
-{{< details summary="See the details" >}}
-
-```python {linenos=inline hl_lines=[] style=emacs}
-
-```
-{{< /details >}}
-
 > The AISMR for 2024 is 947.19 mm while the LTA calculated in 2024 is 853.16. Thus, 2024 received 11 % higher rainfall than LTA.
+
+> The LTA for 2025 is 853.24 mm
 
 ### How has AISMR and LTA changed over the decades ?
 
@@ -303,6 +298,8 @@ $$
 > **Above Normal Rainfall** \\( \coloneqq \\) \\( AISMR_T \\) \\(\\ge \\) 105 %  \\( LTA_T \\)
 >
 > **Below Normal Rainfall** \\( \coloneqq \\) \\( AISMR_T \\)  \\(\leq \\) 95 %  \\( LTA_T \\)
+
+We analyse how the AISMR and LTA has evolved since the 1950s till present.
 
 | year | AISMR (in mm) | LTA (in mm) | status     |
 | ---: | ------------: | ----------: | ---------: |
@@ -383,11 +380,64 @@ $$
 
 > Interesting: the LTA has been decreasing over the decades. From ~883 mm in 1951 to ~853 mm in 2024.
 
-> The LTA for 2025 is 853.24 mm
+On taking a high level view :
 
+| status     | count |
+| :--------- | ----: |
+| normal 🟡 |    28 |
+| below ❌   |    25 |
+| above ✅   |    21 |
+
+> This is not generally highlighted, either by IMD or by the news media, the combination of high number of below normal ❌ AISMR years and the declining LTA trend over the decades.
+
+{{< details summary="See the details" >}}
+
+```python {linenos=inline hl_lines=[] style=emacs}
+import sqlite3
+import pandas as pd
+import numpy as np
+import duckdb
+
+conn = sqlite3.connect('rainfall.db')
+cursor = conn.cursor()
+
+query = """
+SELECT CAST(SUBSTR(date, 6, 2) AS INT) as month, CAST(SUBSTR(date, 1, 4) AS INT) as year, CAST(rf as DOUBLE) as rf 
+from rainfall
+where month in (6, 7, 8, 9)
+"""
+
+cursor.execute(query)
+
+rows = cursor.fetchall()
+
+df = pd.DataFrame(rows, columns=np.array(cursor.description)[:, 0])
+
+conn.close()
+agg_df = duckdb.query("select year, sum(rf) / 4964 as rf from df group by year order by year").df()
+agg_df['LTA'] = agg_df['rf'].shift(1).rolling(window=30, min_periods=1).mean()
+agg_df = agg_df[agg_df['year'] > 1950]
+agg_df['status'] = np.where(agg_df['rf'] < 0.95 * agg_df['LTA'], 'below ❌',
+                        np.where(agg_df['rf'] > 1.05 * agg_df['LTA'], 'above ✅', 'normal 🟡'))
+print(agg_df.to_markdown(index=False))
+# ... markdown table
+summary_df = duckdb.query("select status, count(*) from agg_df group by status").df()
+print(summary_df.to_markdown(index=False))
+# ... markdown table
+duckdb.query("select mean(rf) from agg_df where year >= 1995")
+#┌───────────────────┐
+#│     mean(rf)      │
+#│      double       │
+#├───────────────────┤
+#│ 853.2297699849788 │
+#└───────────────────┘
+```
+{{< /details >}}
 
 # Next Steps
 
-The end goal of this analysis is to forecast AISMR for 2025 and compare the same with IMD's bulletin of Long Range Monsoon Forecast generally released during the end of April.
+The end goal of this analysis is to forecast AISMR for 2025 and compare the same with IMD's bulletin of Long Range Monsoon Forecast generally released during the end of April. 
+
+> The interested reader may use and refer to - [`rainfall.db`](https://www.dropbox.com/scl/fi/vshkbowzc7x3s7ccit4ni/rainfall.db?rlkey=pln9hb82nxz9o9byv928nuuvo&st=9w344l32&dl=0) - a multi GB SQLITE DB file - calculated as described above and used in several code snippets above - for their own experiments.
 
 
