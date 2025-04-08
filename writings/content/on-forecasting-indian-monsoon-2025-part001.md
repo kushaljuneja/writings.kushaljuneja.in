@@ -1,9 +1,7 @@
 +++
-title = "On Forecasting AIMSR 2025 - Part 1 / N"
+title = "On Forecasting AISMR 2025 - Part 1 / N"
 date = 2025-04-03T22:21:30+05:30
 draft = false
-tags = ["experiments"]
-categories = ["experiments"]
 katex = true
 +++
 
@@ -213,7 +211,6 @@ print(jjas_agg_df['sum_rf'].sum() / 4964)
 
 > India received 77.4 % of annual rainfall volume during the Summer Monsoon period. This highlights the importance of Indian Monsoon to India's agricultural, industrial and economic activity.
 
-
 ## What is the Long Period Average (LPA) of AISMR ?
 
 [IMD Monsoon FAQs](https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf) defines LPA as the 50 year time-average of AISMR from 1961 to 2010. IMD's current LPA definition is :
@@ -229,8 +226,6 @@ LPA = \frac {\sum_{t=1961}^{2010}{AISMR_{t}}} {50} = 850.37\ mm
 $$
 
 Our calculations are close enough.
-
-> Remarks: The LPA definition of IMD is not consistent. The [IMD Monsoon FAQs](https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf) has calculated it as 880 mm while the  [IMD 2024 monsoon report](https://www.imdpune.gov.in/latestnews/features_10_2024.pdf) has calculated it as 868 mm. To stay away from such inconsistencies, we use the Long Term Average (LTA) of AISMR.
 
 {{< details summary="See the details" >}}
 
@@ -266,25 +261,129 @@ print(agg_df['rf'].mean())
 ```
 {{< /details >}}
 
-## What is Long Term Average (LTA) of AISMR ? How has the LTA changed over the decades ?
 
-> WORK IN PROGRESS
+> Remarks: The LPA definition of IMD is inconsistent. The [IMD Monsoon FAQs](https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf) has specified it as 880.6 mm while the  [IMD 2024 monsoon report](https://www.imdpune.gov.in/latestnews/features_10_2024.pdf) has calculated it as 868.6 mm. To stay away from such inconsistencies, we define the Long Term Average (LTA) of AISMR and use the same going forward in this analysis.
 
-## How does IMD define a normal, below-normal and above-normal rainfall ?
 
-> WORK IN PROGRESS
+### What is Long Term Average (LTA) of AISMR ? 
 
-<!-- todo -->
+The LTA calculated during year T is defined as the time-averaged AISMR over a 30 years timeframe.
 
-<!-- ## What are some homogenous monsoon rainfall clusters in India ?
+$$
+LTA_T = \frac {\sum_{t=T-30}^{T-1}{AISMR_{t}}} {30} 
+$$
 
-How does this compare to the 5 clusters defined by IMD ?
+Thus, 
 
-What are these cluster regions in India ? 
+$$
+LTA_{2025} = \frac {\sum_{t=1995}^{2024}{AISMR_{t}}} {30} 
+$$
 
-> How does this relate to the industry, agriculture in these areas ? 
+and 
 
-## How does the LTA and rainfall trends looks for each homogenous cluster ? -->
+$$
+LTA_{2024} = \frac {\sum_{t=1994}^{2023}{AISMR_{t}}} {30} = 
+$$
+
+{{< details summary="See the details" >}}
+
+```python {linenos=inline hl_lines=[] style=emacs}
+
+```
+{{< /details >}}
+
+> The AISMR for 2024 is 947.19 mm while the LTA calculated in 2024 is 853.16. Thus, 2024 received 11 % higher rainfall than LTA.
+
+### How has AISMR and LTA changed over the decades ?
+
+> IMD's categories the monsoon each year as Normal, Above Normal or Below Normal. However, similar to LPA, their classification is inconsistent. To stay away from such inconsistencies, we define:
+> 
+> **Normal Rainfall** \\( \coloneqq  AISMR_T \in (95, 105 ) \\) % of \\( LTA_T \\)
+>
+> **Above Normal Rainfall** \\( \coloneqq \\) \\( AISMR_T \\) \\(\\ge \\) 105 %  \\( LTA_T \\)
+>
+> **Below Normal Rainfall** \\( \coloneqq \\) \\( AISMR_T \\)  \\(\leq \\) 95 %  \\( LTA_T \\)
+
+| year | AISMR (in mm) | LTA (in mm) | status     |
+| ---: | ------------: | ----------: | ---------: |
+| 1951 |       709.901 |      883.83 | below ❌   |
+| 1952 |       799.627 |     877.977 | below ❌   |
+| 1953 |       913.848 |      875.13 | normal 🟡 |
+| 1954 |       887.135 |     877.951 | normal 🟡 |
+| 1955 |       913.362 |     877.493 | normal 🟡 |
+| 1956 |       934.827 |     880.618 | above ✅   |
+| 1957 |       814.743 |     881.807 | below ❌   |
+| 1958 |       928.126 |     879.984 | above ✅   |
+| 1959 |        957.38 |     884.802 | above ✅   |
+| 1960 |       852.253 |     889.407 | normal 🟡 |
+| 1961 |       989.018 |     890.265 | above ✅   |
+| 1962 |       854.456 |     892.713 | normal 🟡 |
+| 1963 |       834.031 |     892.904 | below ❌   |
+| 1964 |       935.972 |     888.047 | above ✅   |
+| 1965 |       711.559 |      888.38 | below ❌   |
+| 1966 |       758.374 |     882.896 | below ❌   |
+| 1967 |       854.244 |     877.015 | normal 🟡 |
+| 1968 |       754.356 |     876.872 | below ❌   |
+| 1969 |       823.993 |     870.622 | below ❌   |
+| 1970 |       949.253 |     871.168 | above ✅   |
+| 1971 |       886.678 |     874.514 | normal 🟡 |
+| 1972 |       661.302 |     878.578 | below ❌   |
+| 1973 |       904.052 |     868.536 | normal 🟡 |
+| 1974 |        804.69 |     868.866 | below ❌   |
+| 1975 |       994.829 |     864.758 | above ✅   |
+| 1976 |       886.949 |     867.307 | normal 🟡 |
+| 1977 |       885.147 |     866.098 | normal 🟡 |
+| 1978 |       922.309 |     864.344 | above ✅   |
+| 1979 |       709.393 |     864.793 | below ❌   |
+| 1980 |        920.51 |     857.751 | above ✅   |
+| 1981 |       863.571 |     858.411 | normal 🟡 |
+| 1982 |       760.289 |     863.533 | below ❌   |
+| 1983 |       963.374 |     862.222 | above ✅   |
+| 1984 |       863.582 |     863.873 | normal 🟡 |
+| 1985 |       806.406 |     863.087 | below ❌   |
+| 1986 |       769.907 |     859.522 | below ❌   |
+| 1987 |       743.828 |     854.025 | below ❌   |
+| 1988 |       1008.34 |     851.661 | above ✅   |
+| 1989 |       864.364 |     854.335 | normal 🟡 |
+| 1990 |       931.193 |     851.234 | above ✅   |
+| 1991 |       834.961 |     853.866 | normal 🟡 |
+| 1992 |       825.259 |     848.731 | normal 🟡 |
+| 1993 |       872.294 |     847.757 | normal 🟡 |
+| 1994 |       945.225 |     849.033 | above ✅   |
+| 1995 |       888.767 |     849.341 | normal 🟡 |
+| 1996 |        852.59 |     855.248 | normal 🟡 |
+| 1997 |       848.355 |     858.389 | normal 🟡 |
+| 1998 |       878.207 |     858.192 | normal 🟡 |
+| 1999 |       803.414 |     862.321 | below ❌   |
+| 2000 |       783.602 |     861.635 | below ❌   |
+| 2001 |       799.312 |     856.113 | below ❌   |
+| 2002 |       693.952 |     853.201 | below ❌   |
+| 2003 |       894.261 |     854.289 | normal 🟡 |
+| 2004 |       762.101 |     853.963 | below ❌   |
+| 2005 |        866.43 |     852.543 | normal 🟡 |
+| 2006 |       882.929 |     848.263 | normal 🟡 |
+| 2007 |       933.815 |     848.129 | above ✅   |
+| 2008 |       890.284 |     849.751 | normal 🟡 |
+| 2009 |       725.103 |     848.684 | below ❌   |
+| 2010 |       921.684 |     849.208 | above ✅   |
+| 2011 |         920.5 |     849.247 | above ✅   |
+| 2012 |        831.08 |     851.144 | normal 🟡 |
+| 2013 |       926.049 |     853.504 | above ✅   |
+| 2014 |       766.994 |      852.26 | below ❌   |
+| 2015 |       763.798 |      849.04 | below ❌   |
+| 2016 |       859.043 |      847.62 | normal 🟡 |
+| 2017 |       846.442 |     850.591 | normal 🟡 |
+| 2018 |       796.853 |     854.012 | below ❌   |
+| 2019 |       960.585 |     846.962 | above ✅   |
+| 2020 |       956.956 |     850.169 | above ✅   |
+| 2021 |       865.392 |     851.028 | normal 🟡 |
+| 2022 |       919.938 |     852.042 | above ✅   |
+| 2023 |       811.267 |     855.198 | below ❌   |
+| 2024 |       947.191 |     853.164 | above ✅   |
+
+> Interesting: the LTA has been decreasing over the decades. From ~883 mm in 1951 to ~853 mm in 2024.
+
+> The LTA for 2025 is 853.24 mm
 
 
 # Next Steps
