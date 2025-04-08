@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>On Forecasting AIMSR 2025 - Part 1 / N &middot; Writings</title>
+  <title>On Forecasting AISMR 2025 - Part 1 / N &middot; Writings</title>
   <meta name="description" content="" />
 
   
@@ -68,7 +68,7 @@
 
     <main class="content container">
     <div class="post">
-  <h1>On Forecasting AIMSR 2025 - Part 1 / N</h1>
+  <h1>On Forecasting AISMR 2025 - Part 1 / N</h1>
   <time datetime=2025-04-03T22:21:30&#43;0530 class="post-date">Thu, Apr 3, 2025</time>
 
   <nav id="TableOfContents">
@@ -80,9 +80,12 @@
         <li><a href="#how-many-distinct-025degree--025degree-grid-points-cover-the-indian-landmass-">How many distinct \(0.25\degree * 0.25\degree\) grid points cover the Indian landmass ?</a></li>
         <li><a href="#how-much-rainfall-did-india-receive-over-the-course-of-2024-">How much rainfall did India receive over the course of 2024 ?</a></li>
         <li><a href="#how-much-rainfall-did-india-receive-over-the-course-of-summer-monsoon-2024-">How much rainfall did India receive over the course of Summer Monsoon 2024 ?</a></li>
-        <li><a href="#what-is-the-long-period-average-lpa-of-aismr-">What is the Long Period Average (LPA) of AISMR ?</a></li>
-        <li><a href="#what-is-long-term-average-lta-of-aismr--how-has-the-lta-changed-over-the-decades-">What is Long Term Average (LTA) of AISMR ? How has the LTA changed over the decades ?</a></li>
-        <li><a href="#how-does-imd-define-a-normal-below-normal-and-above-normal-rainfall-">How does IMD define a normal, below-normal and above-normal rainfall ?</a></li>
+        <li><a href="#what-is-the-long-period-average-lpa-of-aismr-">What is the Long Period Average (LPA) of AISMR ?</a>
+          <ul>
+            <li><a href="#what-is-long-term-average-lta-of-aismr-">What is Long Term Average (LTA) of AISMR ?</a></li>
+            <li><a href="#how-has-aismr-and-lta-changed-over-the-decades-">How has AISMR and LTA changed over the decades ?</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#next-steps">Next Steps</a></li>
@@ -305,9 +308,6 @@ $$</p>
 LPA = \frac {\sum_{t=1961}^{2010}{AISMR_{t}}} {50} = 850.37\ mm
 $$</p>
 <p>Our calculations are close enough.</p>
-<blockquote>
-<p>Remarks: The LPA definition of IMD is not consistent. The <a href="https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf">IMD Monsoon FAQs</a> has calculated it as 880 mm while the  <a href="https://www.imdpune.gov.in/latestnews/features_10_2024.pdf">IMD 2024 monsoon report</a> has calculated it as 868 mm. To stay away from such inconsistencies, we use the Long Term Average (LTA) of AISMR.</p>
-</blockquote>
 
     <details>
       <summary>See the details</summary>
@@ -340,17 +340,498 @@ $$</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span><span style="color:#a2f">print</span>(agg_df[<span style="color:#b44">&#39;rf&#39;</span>]<span style="color:#666">.</span>mean())
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span><span style="color:#080;font-style:italic"># 850.37</span>
 </span></span></code></pre></div></details>
-<h2 id="what-is-long-term-average-lta-of-aismr--how-has-the-lta-changed-over-the-decades-">What is Long Term Average (LTA) of AISMR ? How has the LTA changed over the decades ?</h2>
 <blockquote>
-<p>WORK IN PROGRESS</p>
+<p>Remarks: The LPA definition of IMD is inconsistent. The <a href="https://mausam.imd.gov.in/imd_latest/monsoonfaq.pdf">IMD Monsoon FAQs</a> has specified it as 880.6 mm while the  <a href="https://www.imdpune.gov.in/latestnews/features_10_2024.pdf">IMD 2024 monsoon report</a> has calculated it as 868.6 mm. To stay away from such inconsistencies, we define the Long Term Average (LTA) of AISMR and use the same going forward in this analysis.</p>
 </blockquote>
-<h2 id="how-does-imd-define-a-normal-below-normal-and-above-normal-rainfall-">How does IMD define a normal, below-normal and above-normal rainfall ?</h2>
+<h3 id="what-is-long-term-average-lta-of-aismr-">What is Long Term Average (LTA) of AISMR ?</h3>
+<p>The LTA calculated during year T is defined as the time-averaged AISMR over a 30 years timeframe.</p>
+<p>$$
+LTA_T = \frac {\sum_{t=T-30}^{T-1}{AISMR_{t}}} {30}
+$$</p>
+<p>Thus,</p>
+<p>$$
+LTA_{2025} = \frac {\sum_{t=1995}^{2024}{AISMR_{t}}} {30}
+$$</p>
+<p>and</p>
+<p>$$
+LTA_{2024} = \frac {\sum_{t=1994}^{2023}{AISMR_{t}}} {30} =
+$$</p>
+
+    <details>
+      <summary>See the details</summary>
+      <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"></code></pre></div></details>
 <blockquote>
-<p>WORK IN PROGRESS</p>
+<p>The AISMR for 2024 is 947.19 mm while the LTA calculated in 2024 is 853.16. Thus, 2024 received 11 % higher rainfall than LTA.</p>
 </blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h3 id="how-has-aismr-and-lta-changed-over-the-decades-">How has AISMR and LTA changed over the decades ?</h3>
+<blockquote>
+<p>IMD&rsquo;s categories the monsoon each year as Normal, Above Normal or Below Normal. However, similar to LPA, their classification is inconsistent. To stay away from such inconsistencies, we define:</p>
+<p><strong>Normal Rainfall</strong> \( \coloneqq  AISMR_T \in (95, 105 ) \) % of \( LTA_T \)</p>
+<p><strong>Above Normal Rainfall</strong> \( \coloneqq \) \( AISMR_T \) \(\ge \) 105 %  \( LTA_T \)</p>
+<p><strong>Below Normal Rainfall</strong> \( \coloneqq \) \( AISMR_T \)  \(\leq \) 95 %  \( LTA_T \)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">year</th>
+<th style="text-align:right">AISMR (in mm)</th>
+<th style="text-align:right">LTA (in mm)</th>
+<th style="text-align:right">status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1951</td>
+<td style="text-align:right">709.901</td>
+<td style="text-align:right">883.83</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1952</td>
+<td style="text-align:right">799.627</td>
+<td style="text-align:right">877.977</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1953</td>
+<td style="text-align:right">913.848</td>
+<td style="text-align:right">875.13</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1954</td>
+<td style="text-align:right">887.135</td>
+<td style="text-align:right">877.951</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1955</td>
+<td style="text-align:right">913.362</td>
+<td style="text-align:right">877.493</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1956</td>
+<td style="text-align:right">934.827</td>
+<td style="text-align:right">880.618</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1957</td>
+<td style="text-align:right">814.743</td>
+<td style="text-align:right">881.807</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1958</td>
+<td style="text-align:right">928.126</td>
+<td style="text-align:right">879.984</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1959</td>
+<td style="text-align:right">957.38</td>
+<td style="text-align:right">884.802</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1960</td>
+<td style="text-align:right">852.253</td>
+<td style="text-align:right">889.407</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1961</td>
+<td style="text-align:right">989.018</td>
+<td style="text-align:right">890.265</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1962</td>
+<td style="text-align:right">854.456</td>
+<td style="text-align:right">892.713</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1963</td>
+<td style="text-align:right">834.031</td>
+<td style="text-align:right">892.904</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1964</td>
+<td style="text-align:right">935.972</td>
+<td style="text-align:right">888.047</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1965</td>
+<td style="text-align:right">711.559</td>
+<td style="text-align:right">888.38</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1966</td>
+<td style="text-align:right">758.374</td>
+<td style="text-align:right">882.896</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1967</td>
+<td style="text-align:right">854.244</td>
+<td style="text-align:right">877.015</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1968</td>
+<td style="text-align:right">754.356</td>
+<td style="text-align:right">876.872</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1969</td>
+<td style="text-align:right">823.993</td>
+<td style="text-align:right">870.622</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1970</td>
+<td style="text-align:right">949.253</td>
+<td style="text-align:right">871.168</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1971</td>
+<td style="text-align:right">886.678</td>
+<td style="text-align:right">874.514</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1972</td>
+<td style="text-align:right">661.302</td>
+<td style="text-align:right">878.578</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1973</td>
+<td style="text-align:right">904.052</td>
+<td style="text-align:right">868.536</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1974</td>
+<td style="text-align:right">804.69</td>
+<td style="text-align:right">868.866</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1975</td>
+<td style="text-align:right">994.829</td>
+<td style="text-align:right">864.758</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1976</td>
+<td style="text-align:right">886.949</td>
+<td style="text-align:right">867.307</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1977</td>
+<td style="text-align:right">885.147</td>
+<td style="text-align:right">866.098</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1978</td>
+<td style="text-align:right">922.309</td>
+<td style="text-align:right">864.344</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1979</td>
+<td style="text-align:right">709.393</td>
+<td style="text-align:right">864.793</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1980</td>
+<td style="text-align:right">920.51</td>
+<td style="text-align:right">857.751</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1981</td>
+<td style="text-align:right">863.571</td>
+<td style="text-align:right">858.411</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1982</td>
+<td style="text-align:right">760.289</td>
+<td style="text-align:right">863.533</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1983</td>
+<td style="text-align:right">963.374</td>
+<td style="text-align:right">862.222</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1984</td>
+<td style="text-align:right">863.582</td>
+<td style="text-align:right">863.873</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1985</td>
+<td style="text-align:right">806.406</td>
+<td style="text-align:right">863.087</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1986</td>
+<td style="text-align:right">769.907</td>
+<td style="text-align:right">859.522</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1987</td>
+<td style="text-align:right">743.828</td>
+<td style="text-align:right">854.025</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">1988</td>
+<td style="text-align:right">1008.34</td>
+<td style="text-align:right">851.661</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1989</td>
+<td style="text-align:right">864.364</td>
+<td style="text-align:right">854.335</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1990</td>
+<td style="text-align:right">931.193</td>
+<td style="text-align:right">851.234</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1991</td>
+<td style="text-align:right">834.961</td>
+<td style="text-align:right">853.866</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1992</td>
+<td style="text-align:right">825.259</td>
+<td style="text-align:right">848.731</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1993</td>
+<td style="text-align:right">872.294</td>
+<td style="text-align:right">847.757</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1994</td>
+<td style="text-align:right">945.225</td>
+<td style="text-align:right">849.033</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">1995</td>
+<td style="text-align:right">888.767</td>
+<td style="text-align:right">849.341</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1996</td>
+<td style="text-align:right">852.59</td>
+<td style="text-align:right">855.248</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1997</td>
+<td style="text-align:right">848.355</td>
+<td style="text-align:right">858.389</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1998</td>
+<td style="text-align:right">878.207</td>
+<td style="text-align:right">858.192</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">1999</td>
+<td style="text-align:right">803.414</td>
+<td style="text-align:right">862.321</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2000</td>
+<td style="text-align:right">783.602</td>
+<td style="text-align:right">861.635</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2001</td>
+<td style="text-align:right">799.312</td>
+<td style="text-align:right">856.113</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2002</td>
+<td style="text-align:right">693.952</td>
+<td style="text-align:right">853.201</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2003</td>
+<td style="text-align:right">894.261</td>
+<td style="text-align:right">854.289</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">2004</td>
+<td style="text-align:right">762.101</td>
+<td style="text-align:right">853.963</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2005</td>
+<td style="text-align:right">866.43</td>
+<td style="text-align:right">852.543</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">2006</td>
+<td style="text-align:right">882.929</td>
+<td style="text-align:right">848.263</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">2007</td>
+<td style="text-align:right">933.815</td>
+<td style="text-align:right">848.129</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">2008</td>
+<td style="text-align:right">890.284</td>
+<td style="text-align:right">849.751</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">2009</td>
+<td style="text-align:right">725.103</td>
+<td style="text-align:right">848.684</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2010</td>
+<td style="text-align:right">921.684</td>
+<td style="text-align:right">849.208</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">2011</td>
+<td style="text-align:right">920.5</td>
+<td style="text-align:right">849.247</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">2012</td>
+<td style="text-align:right">831.08</td>
+<td style="text-align:right">851.144</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">2013</td>
+<td style="text-align:right">926.049</td>
+<td style="text-align:right">853.504</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">2014</td>
+<td style="text-align:right">766.994</td>
+<td style="text-align:right">852.26</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2015</td>
+<td style="text-align:right">763.798</td>
+<td style="text-align:right">849.04</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2016</td>
+<td style="text-align:right">859.043</td>
+<td style="text-align:right">847.62</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">2017</td>
+<td style="text-align:right">846.442</td>
+<td style="text-align:right">850.591</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">2018</td>
+<td style="text-align:right">796.853</td>
+<td style="text-align:right">854.012</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2019</td>
+<td style="text-align:right">960.585</td>
+<td style="text-align:right">846.962</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">2020</td>
+<td style="text-align:right">956.956</td>
+<td style="text-align:right">850.169</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">2021</td>
+<td style="text-align:right">865.392</td>
+<td style="text-align:right">851.028</td>
+<td style="text-align:right">normal 🟡</td>
+</tr>
+<tr>
+<td style="text-align:right">2022</td>
+<td style="text-align:right">919.938</td>
+<td style="text-align:right">852.042</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+<tr>
+<td style="text-align:right">2023</td>
+<td style="text-align:right">811.267</td>
+<td style="text-align:right">855.198</td>
+<td style="text-align:right">below ❌</td>
+</tr>
+<tr>
+<td style="text-align:right">2024</td>
+<td style="text-align:right">947.191</td>
+<td style="text-align:right">853.164</td>
+<td style="text-align:right">above ✅</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Interesting: the LTA has been decreasing over the decades. From ~883 mm in 1951 to ~853 mm in 2024.</p>
+</blockquote>
+<blockquote>
+<p>The LTA for 2025 is 853.24 mm</p>
+</blockquote>
 <h1 id="next-steps">Next Steps</h1>
 <p>The end goal of this analysis is to forecast AISMR for 2025 and compare the same with IMD&rsquo;s bulletin of Long Range Monsoon Forecast generally released during the end of April.</p>
 
