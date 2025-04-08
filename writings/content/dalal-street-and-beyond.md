@@ -5,8 +5,6 @@ draft = false
 tags = ["podcast"]
 +++
 
-[![Listen On Spotify](https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/episode/3h5WQPx1zq8slyuYgLtJGO?si=696a29ae19ab4d84)
-
 Markets, business and policy are all driven by one thing - narrative. Welcome to The Narrative Podcast, the podcast where we break down the stories behind business, markets and policy. If you want to understand the world beyond the headlines, this is your space for insight, analysis and clarity. I am your host Kushal Juneja and in this episode - "Dalal Street and beyond" - we will discuss about the BSE, the NSE, the SENSEX and NIFTY indices, and also touch upon other major stock exchanges and indices around the world.
 
 Let us start with the BSE. The BSE (formerly known as the Bombay Stock Exchange) is Asia's oldest stock exchange, established in 1875 in Mumbai. That was 150 years ago! The BSE lists over 5000 companies across various sectors and has played a crucial role in developing India's capital markets.
