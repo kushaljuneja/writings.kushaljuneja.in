@@ -1,5 +1,6 @@
 +++
 title = "On Forecasting AISMR 2025 - Part 1 / N"
+subtitle = "Data Collection and Exploratory Data Analysis"
 date = 2025-04-03T22:21:30+05:30
 draft = false
 katex = true

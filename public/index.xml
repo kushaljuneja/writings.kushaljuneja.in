@@ -6,25 +6,28 @@
     <description>Recent content on Writings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Mar 2025 19:22:08 +0530</lastBuildDate><atom:link href="https://writings.kushaljuneja.in/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Apr 2025 23:02:42 +0530</lastBuildDate>
+    <atom:link href="https://writings.kushaljuneja.in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On Forecasting AISMR 2025 - Part 2 / N</title>
+      <link>https://writings.kushaljuneja.in/on-forecasting-indian-monsoon-2025-part-002/</link>
+      <pubDate>Wed, 09 Apr 2025 23:02:42 +0530</pubDate>
+      <guid>https://writings.kushaljuneja.in/on-forecasting-indian-monsoon-2025-part-002/</guid>
+      <description>Introduction In this post, we will analyse how to identify different clusters in India that have similar rainfall patterns. This analysis is the second step (i.e. 2 / N) to accurately and timely forecast All India Summer Monsoon Rainfall (AISMR) 2025.&#xA;On identifying clusters of regions having homogenous rainfall patterns Methodolgy We go through a simplified example. Assume we have 9 regions - \( R_1 &amp;hellip; R_9 \). The goal is to identify 3 clusters - \( C_1 &amp;hellip; C_3 \) - such that each cluster contains regions having similar rainfall patterns.</description>
+    </item>
     <item>
       <title>On Forecasting AISMR 2025 - Part 1 / N</title>
       <link>https://writings.kushaljuneja.in/on-forecasting-indian-monsoon-2025-part001/</link>
       <pubDate>Thu, 03 Apr 2025 22:21:30 +0530</pubDate>
-      
       <guid>https://writings.kushaljuneja.in/on-forecasting-indian-monsoon-2025-part001/</guid>
-      <description>Introduction In this post, we will analyse India&amp;rsquo;s historic monsoon rainfall patterns. This analysis is the first step (i.e. 1 / N) to accurately and timely forecast All India Summer Monsoon Rainfall (AISMR) 2025 - and compare it with IMD&amp;rsquo;s official forecast released in May 2025.
-Data Collection We require India&amp;rsquo;s historic rainfall data. IMD Pune provides us with daily rainfall data over each \(0.25\degree * 0.25\degree\) grid over India for the time range \(1901 - 2024\).</description>
+      <description>Introduction In this post, we will analyse India&amp;rsquo;s historic monsoon rainfall patterns. This analysis is the first step (i.e. 1 / N) to accurately and timely forecast All India Summer Monsoon Rainfall (AISMR) 2025 - and compare it with IMD&amp;rsquo;s official forecast released in May 2025.&#xA;Data Collection We require India&amp;rsquo;s historic rainfall data. IMD Pune provides us with daily rainfall data over each \(0.25\degree * 0.25\degree\) grid over India for the time range \(1901 - 2024\).</description>
     </item>
-    
     <item>
       <title>Dalal Street and Beyond</title>
       <link>https://writings.kushaljuneja.in/dalal-street-and-beyond/</link>
       <pubDate>Mon, 31 Mar 2025 19:22:08 +0530</pubDate>
-      
       <guid>https://writings.kushaljuneja.in/dalal-street-and-beyond/</guid>
       <description>Markets, business and policy are all driven by one thing - narrative. Welcome to The Narrative Podcast, the podcast where we break down the stories behind business, markets and policy. If you want to understand the world beyond the headlines, this is your space for insight, analysis and clarity. I am your host Kushal Juneja and in this episode - &amp;ldquo;Dalal Street and beyond&amp;rdquo; - we will discuss about the BSE, the NSE, the SENSEX and NIFTY indices, and also touch upon other major stock exchanges and indices around the world.</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>podcast on Writings</title>
+    <title>Podcast on Writings</title>
     <link>https://writings.kushaljuneja.in/tags/podcast/</link>
-    <description>Recent content in podcast on Writings</description>
+    <description>Recent content in Podcast on Writings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Mar 2025 19:22:08 +0530</lastBuildDate><atom:link href="https://writings.kushaljuneja.in/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Mar 2025 19:22:08 +0530</lastBuildDate>
+    <atom:link href="https://writings.kushaljuneja.in/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dalal Street and Beyond</title>
       <link>https://writings.kushaljuneja.in/dalal-street-and-beyond/</link>
       <pubDate>Mon, 31 Mar 2025 19:22:08 +0530</pubDate>
-      
       <guid>https://writings.kushaljuneja.in/dalal-street-and-beyond/</guid>
       <description>Markets, business and policy are all driven by one thing - narrative. Welcome to The Narrative Podcast, the podcast where we break down the stories behind business, markets and policy. If you want to understand the world beyond the headlines, this is your space for insight, analysis and clarity. I am your host Kushal Juneja and in this episode - &amp;ldquo;Dalal Street and beyond&amp;rdquo; - we will discuss about the BSE, the NSE, the SENSEX and NIFTY indices, and also touch upon other major stock exchanges and indices around the world.</description>
     </item>
-    
   </channel>
 </rss>
